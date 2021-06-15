@@ -2,8 +2,6 @@ FROM alpine
 
 WORKDIR /app
 
-COPY src/* .
-
 RUN apk add php
 
 ENTRYPOINT ["/usr/bin/php"]
