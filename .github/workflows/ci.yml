@@ -4,9 +4,16 @@ on:
     branches:
       - docker
 jobs:
-  dockerfile:
-    runs-on: ubuntu-latest
+  Dockerfile:
+    runs-on: ubuntu-18.04
     steps:
       - name: checkout
-        uses: actions/checkout@v2
-        
+        uses: actions/checkout@v2 
+      - name: build
+        run: docker image build --tag santander-phpinfo:test --file Dockerfile ./
+      - name: network
+        run: docker network create santander-phpinfo
+      - name: run
+        run: docker container run --detach --entrypoint /usr/bin/php --name santander-phpinfo --network santander-phpinfo --workdir /app/ santander-phpinfo:test -f index.php -S 0.0.0.0:8080
+      - name: logs
+        run: while true; do sleep 10; docker container logs santander-phpinfo 2>&1 | grep started && break; done
