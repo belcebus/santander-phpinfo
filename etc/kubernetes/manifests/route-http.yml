@@ -1,0 +1,10 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ruta1
+spec:
+  to:
+    kind: Service
+    name: santander-phpinfo-svc
+  port:
+    targetPort: 80
