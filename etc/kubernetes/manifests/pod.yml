@@ -9,7 +9,7 @@ spec:
     - name: santander-phpinfo-container
       command:
         - /usr/bin/php
-      image: belcebus/santander-phpinfo
+      image: belcebus/santander-phpinfo:1.1
       workingDir: /app/
       args:
         - '-f'
