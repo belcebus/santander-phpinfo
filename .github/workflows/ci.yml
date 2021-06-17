@@ -1,0 +1,12 @@
+name: ci
+on:
+  push:
+    branches:
+      - docker
+jobs:
+  dockerfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        
